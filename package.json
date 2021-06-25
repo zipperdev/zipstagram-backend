@@ -1,0 +1,21 @@
+{
+  "name": "zipstagram",
+  "version": "1.0.0",
+  "description": "",
+  "scripts": {
+    "dev": ""
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/zipperdev/Zipstagram-Backend.git"
+  },
+  "keywords": [
+    "api"
+  ],
+  "author": "zipperdev",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/zipperdev/Zipstagram-Backend/issues"
+  },
+  "homepage": "https://github.com/zipperdev/Zipstagram-Backend#readme"
+}
