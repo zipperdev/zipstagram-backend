@@ -2,7 +2,7 @@
 
 Zipstagram API Backend
 
-## User
+## User (Done)
 
 - [X] Create Account
 - [X] See Profile
@@ -13,8 +13,8 @@ Zipstagram API Backend
 - [X] Unfollow User
 - [X] See Followers / Pagination
 - [X] See Following / Pagination
-- [ ] Computed Fields
-- [ ] Search Users
+- [X] Computed Fields
+- [X] Search Users
 
 ## Photos
 

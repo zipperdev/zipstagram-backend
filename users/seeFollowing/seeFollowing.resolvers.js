@@ -18,7 +18,7 @@ export default {
                     .following({
                         take: 5, 
                         skip: lastId ? 1 : 0, 
-                        ...(lastId && { cursor: { id: lastId  } })
+                        ...(lastId && { cursor: { id: lastId } })
                     });
                 return {
                     success: true, 
