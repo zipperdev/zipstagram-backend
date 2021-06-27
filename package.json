@@ -3,7 +3,10 @@
   "version": "1.0.0",
   "description": "",
   "scripts": {
-    "dev": ""
+    "preinstall": "npx npm-force-resolutions@0.0.3",
+    "dev": "nodemon --exec babel-node server.js --delay 2s",
+    "migrate": "npx prisma migrate dev --preview-feature",
+    "studio": "npx prisma studio"
   },
   "repository": {
     "type": "git",
@@ -17,5 +20,28 @@
   "bugs": {
     "url": "https://github.com/zipperdev/Zipstagram-Backend/issues"
   },
-  "homepage": "https://github.com/zipperdev/Zipstagram-Backend#readme"
+  "homepage": "https://github.com/zipperdev/Zipstagram-Backend#readme",
+  "dependencies": {
+    "@prisma/client": "^2.25.0",
+    "apollo-server": "^2.25.2",
+    "apollo-server-express": "^2.25.2",
+    "bcrypt": "^5.0.1",
+    "dotenv": "^10.0.0",
+    "express": "^4.17.1",
+    "graphql": "^15.5.1",
+    "graphql-tools": "^7.0.5",
+    "jsonwebtoken": "^8.5.1",
+    "morgan": "^1.10.0"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.14.6",
+    "@babel/node": "^7.14.7",
+    "@babel/preset-env": "^7.14.7",
+    "nodemon": "^2.0.7",
+    "prisma": "^2.25.0"
+  },
+  "resolutions": {
+    "fs-capacitor": "^6.2.0",
+    "graphql-upload": "^11.0.0"
+  }
 }
