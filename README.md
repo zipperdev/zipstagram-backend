@@ -18,11 +18,11 @@ Zipstagram API Backend
 
 ## Photos
 
-- [ ] Upload Photo (Parse #)
-- [ ] See Photo
-- [ ] See Hashtags
-- [ ] Search Photos
-- [ ] Edit Photo
+- [X] Upload Photo (Parse #)
+- [X] See Photo
+- [X] See Hashtags
+- [X] Search Photos
+- [X] Edit Photo
 - [ ] Like / Unlike Photo
 - [ ] See Photo Likes
 - [ ] See Feed

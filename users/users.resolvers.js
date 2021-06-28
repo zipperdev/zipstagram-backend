@@ -16,6 +16,16 @@ export default {
                 }
             }
         } }), 
+        photos: ({ id }, { lastId }) => client.hashtag.findUnique({
+                where: {
+                    id
+                }
+            })
+            .photos({
+                take: 40, 
+                skip: lastId ? 1 : 0, 
+                ...(lastId && { cursor: { id: lastId } })
+            }), 
         isMe: ({ id }, _, { loggedInUser }) => id === loggedInUser?.id, 
         isFollowing: async ({ id }, _, { loggedInUser }) => {
             if (!loggedInUser) {

@@ -10,7 +10,7 @@ export default gql`
     type Query {
         seeFollowers(
             username: String!, 
-            lastId: Int!
+            lastId: Int
         ) : SeeFollowersResult!
     }
 `;

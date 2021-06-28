@@ -2,7 +2,7 @@ import client from "../../client";
 
 export default {
     Query: {
-        searchUsers: async (_, { keyword, lastId }) => client.user.findMany({
+        searchUsers: (_, { keyword, lastId }) => client.user.findMany({
                 where: {
                     OR: [
                         {
@@ -22,7 +22,7 @@ export default {
                         }
                     ]
                 }, 
-                take: 5, 
+                take: 30, 
                 skip: lastId ? 1 : 0, 
                 ...(lastId && { cursor: { id: lastId } })
             })
