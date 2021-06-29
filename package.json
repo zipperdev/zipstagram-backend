@@ -22,15 +22,19 @@
   },
   "homepage": "https://github.com/zipperdev/Zipstagram-Backend#readme",
   "dependencies": {
+    "@paljs/plugins": "^3.4.0",
     "@prisma/client": "^2.25.0",
     "apollo-server": "^2.25.2",
     "apollo-server-express": "^2.25.2",
+    "aws-sdk": "^2.936.0",
     "bcrypt": "^5.0.1",
     "dotenv": "^10.0.0",
     "express": "^4.17.1",
     "graphql": "^15.5.1",
     "graphql-tools": "^7.0.5",
+    "graphql-upload": "^12.0.0",
     "jsonwebtoken": "^8.5.1",
+    "keygenerator": "^1.0.4",
     "morgan": "^1.10.0"
   },
   "devDependencies": {

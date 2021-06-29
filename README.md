@@ -16,19 +16,34 @@ Zipstagram API Backend
 - [X] Computed Fields
 - [X] Search Users
 
-## Photos
+## Photos (Done)
 
 - [X] Upload Photo (Parse #)
 - [X] See Photo
 - [X] See Hashtags
 - [X] Search Photos
 - [X] Edit Photo
-- [ ] Like / Unlike Photo
-- [ ] See Photo Likes
-- [ ] See Feed
+- [X] Like / Unlike Photo
+- [X] See Photo Likes
+- [X] See Feed
+- [X] See Photo Comments
+- [X] Delete Photo
 
-## Comments
+## Comments (Done)
 
-- [ ] Comment on Photo
-- [ ] Edit Comment
-- [ ] Delete Comment
+- [X] Comment on Photo
+- [X] Delete Comment
+- [X] Edit Comment
+
+## Direct Messages
+
+- [X] See Rooms
+- [X] Send Message (Create Room)
+- [X] See Room
+- [ ] Computed Fields
+- [ ] See Message
+- [ ] Realtime Messages
+
+## Extras (Done)
+
+- [X] S3 Image Upload

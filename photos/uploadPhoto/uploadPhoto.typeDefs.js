@@ -3,7 +3,7 @@ import { gql } from "apollo-server";
 export default gql`
     type Mutation {
         uploadPhoto(
-            file: String!, 
+            file: Upload!, 
             caption: String
         ): Photo
     }

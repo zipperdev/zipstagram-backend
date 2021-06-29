@@ -20,9 +20,14 @@ export const getUser = async (token) => {
 
 export const protectedResolver = (selectedResolver) => (root, args, context, info) => {
     if (!context.loggedInUser) {
-        return {
-            success: false, 
-            error: "Please login to perform this action."
+        const query = info.operation.operation === "query";
+        if (query) {
+            return null;
+        } else {
+            return {
+                success: false, 
+                error: "Please login to perform this action."
+            };
         };
     } else {
         return selectedResolver(root, args, context, info);
