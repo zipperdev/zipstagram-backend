@@ -3,9 +3,11 @@ import { gql } from "apollo-server";
 export default gql`
     type Message {
         id: Int!
-        payload: String!
         user: User!
         room: Room!
+        payload: String!
+        read: Boolean!
+        isMine: Boolean!
         createdAt: String!
         updatedAt: String!
     }
@@ -14,6 +16,7 @@ export default gql`
         id: Int!
         users(lastId: Int): [User]
         messages(lastId: Int): [Message]
+        unreadTotal: Int!
         createdAt: String!
         updatedAt: String!
     }

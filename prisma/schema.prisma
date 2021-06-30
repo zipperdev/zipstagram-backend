@@ -92,6 +92,7 @@ model Message {
   userId    Int
   roomId    Int
   payload   String
+  read      Boolean  @default(false)
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 }

@@ -1,4 +1,6 @@
 import client from "../../client";
+import pubsub from "../../pubsub";
+import { NEW_MESSAGE } from "../../constants";
 import { protectedResolver } from "../../users/users.utils";
 
 const resolverFn = async (_, { payload, roomId, userId }, { loggedInUser }) => {
@@ -18,20 +20,39 @@ const resolverFn = async (_, { payload, roomId, userId }, { loggedInUser }) => {
                 error: "This user does not exists."
             };
         } else {
-            room = await client.room.create({
-                data: {
+            const existRoom = await client.room.findFirst({
+                where: {
                     users: {
-                        connect: [
-                            {
-                                id: userId
-                            }, 
-                            {
-                                id: loggedInUser
-                            }
-                        ]
+                        some: {
+                            id: userId
+                        }
                     }
+                },
+                select: {
+                    id: true
                 }
             });
+            if (existRoom) {
+                return {
+                    success: false, 
+                    error: "The room already exists."
+                };
+            } else {
+                room = await client.room.create({
+                    data: {
+                        users: {
+                            connect: [
+                                {
+                                    id: userId
+                                }, 
+                                {
+                                    id: loggedInUser.id
+                                }
+                            ]
+                        }
+                    }
+                });
+            };
         };
     } else if (roomId) {
         room = await client.room.findUnique({
@@ -54,7 +75,7 @@ const resolverFn = async (_, { payload, roomId, userId }, { loggedInUser }) => {
             error: "Fill the roomId or the userId field."
         };
     };
-    await client.message.create({
+    const message = await client.message.create({
         data: {
             payload, 
             user: {
@@ -69,6 +90,7 @@ const resolverFn = async (_, { payload, roomId, userId }, { loggedInUser }) => {
             }
         }
     });
+    pubsub.publish(NEW_MESSAGE, { roomUpdates: { ...message } });
     return {
         success: true
     };

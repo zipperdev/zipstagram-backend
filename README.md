@@ -1,6 +1,6 @@
 # Zipstagram
 
-Zipstagram API Backend
+Zipstagram API Backend (All Done)
 
 ## User (Done)
 
@@ -35,15 +35,16 @@ Zipstagram API Backend
 - [X] Delete Comment
 - [X] Edit Comment
 
-## Direct Messages
+## Direct Messages (Done)
 
 - [X] See Rooms
 - [X] Send Message (Create Room)
 - [X] See Room
-- [ ] Computed Fields
-- [ ] See Message
-- [ ] Realtime Messages
+- [X] Computed Fields
+- [X] Read Message
+- [X] Realtime Messages
 
 ## Extras (Done)
 
-- [X] S3 Image Upload
+- [X] AWS S3 Image Upload
+- [X] AWS S3 Image Remove
