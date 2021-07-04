@@ -4,23 +4,23 @@ import { protectedResolver } from "../../users/users.utils";
 import { processHashtags } from "../photos.utils";
 
 const resolverFn = async (_, { file, caption }, { loggedInUser }) => {
-    let hashtagObjs = [];
+    let hashtagObj = [];
     if (caption) {
-        hashtagObjs = processHashtags(caption);
+        hashtagObj = processHashtags(caption);
     };
     const fileUrl = await uploadToS3(file, loggedInUser.id, "uploads");
     return client.photo.create({
         data: {
-            file: fileUrl, 
-            ...(caption && { caption }), 
+            file: fileUrl,
+            caption,
             user: {
                 connect: {
                     id: loggedInUser.id
                 }
-            }, 
-            ...(hashtagObjs.length > 0 && {
+            },
+            ...(hashtagObj.length > 0 && {
                 hashtags: {
-                    connectOrCreate: hashtagObjs
+                    connectOrCreate: hashtagObj
                 }
             })
         }
