@@ -13,10 +13,10 @@ export default {
                     email
                 }
             });
-            if (!user) {
+            if (!user || !user?.verified) {
                 return {
                     success: false, 
-                    error: "User not found."
+                    error: user?.verified === false ? "Not verified account." : "User not found."
                 };
             } else {
                 const passwordMatch = await bcrypt.compare(password, user.password);

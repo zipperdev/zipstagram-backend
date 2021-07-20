@@ -5,7 +5,7 @@ import { removeToS3, uploadToS3 } from "../../shared/shared.utils";
 
 const resolverFn = async (
     _, 
-    { firstName, lastName, username, email, bio, avatar, password: newPassword }, 
+    { firstName, lastName, username, bio, avatar, password: newPassword }, 
     { loggedInUser }
 ) => {
     const { avatar: oldAvatarUrl } = await client.user.findUnique({ where: { id: loggedInUser.id }, select: { avatar: true } });
@@ -25,7 +25,6 @@ const resolverFn = async (
             firstName, 
             lastName, 
             username, 
-            email, 
             bio, 
             ...(avatarUrl && { avatar: avatarUrl }), 
             ...(cryptedPassword && { password: cryptedPassword })

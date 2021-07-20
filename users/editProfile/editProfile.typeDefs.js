@@ -6,7 +6,6 @@ export default gql`
             firstName: String
             lastName: String
             username: String
-            email: String
             password: String
             bio: String
             avatar: Upload

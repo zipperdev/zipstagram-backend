@@ -1,5 +1,6 @@
 import bcrypt from "bcrypt";
 import client from "../../client";
+import { sendMail } from '../../utils';
 
 export default {
     Mutation: {
@@ -26,24 +27,40 @@ export default {
                             ]
                         }
                     });
-                    if (existingUser) {
+                    if (existingUser && existingUser.verified === true) {
                         throw new Error("This username or password is already taken.");
                     } else {
+                        if (existingUser?.verified === false) {
+                            await client.user.delete({
+                                where: {
+                                    email
+                                }
+                            });
+                        };
                         const cryptedPassword = await bcrypt.hash(password, 10);
+                        const verifyCode = String(Math.floor(100000 + Math.random() * 900000));
+                        const cryptedVerifyCode = await bcrypt.hash(verifyCode, 6);
                         await client.user.create({
                             data: {
-                                username,
-                                email,
-                                firstName,
-                                lastName,
+                                verifyCode: cryptedVerifyCode, 
+                                username, 
+                                email, 
+                                firstName, 
+                                lastName, 
                                 password: cryptedPassword
                             }
                         });
+                        sendMail(
+                            email, 
+                            "Email Verify from Zipstagram", 
+                            `<h1>Hi ${username}!</h1><br/><p>This is verify code : <b>${verifyCode}</b></p><small>Thank you for visit Zipstagram</small>`
+                        );
                         return {
                             success: true
                         };
                     };
                 } catch (error) {
+                    console.log(error);
                     return {
                         success: false,
                         error: "Cannot create account."

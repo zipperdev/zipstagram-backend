@@ -11,23 +11,25 @@ generator client {
 }
 
 model User {
-  id        Int       @id @default(autoincrement())
-  firstName String
-  lastName  String?
-  username  String    @unique
-  email     String    @unique
-  password  String
-  bio       String?
-  avatar    String?
-  photos    Photo[]
-  likes     Like[]
-  comments  Comment[]
-  rooms     Room[]
-  followers User[]    @relation("FollowRelation", references: [id])
-  following User[]    @relation("FollowRelation", references: [id])
-  createdAt DateTime  @default(now())
-  updatedAt DateTime  @updatedAt
-  Message   Message[]
+  id         Int       @id @default(autoincrement())
+  verified   Boolean   @default(false)
+  verifyCode String
+  firstName  String
+  lastName   String?
+  username   String    @unique
+  email      String    @unique
+  password   String
+  bio        String?
+  avatar     String?
+  photos     Photo[]
+  likes      Like[]
+  comments   Comment[]
+  rooms      Room[]
+  followers  User[]    @relation("FollowRelation", references: [id])
+  following  User[]    @relation("FollowRelation", references: [id])
+  createdAt  DateTime  @default(now())
+  updatedAt  DateTime  @updatedAt
+  Message    Message[]
 }
 
 model Photo {

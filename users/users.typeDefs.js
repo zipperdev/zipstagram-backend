@@ -3,6 +3,8 @@ import { gql } from "apollo-server";
 export default gql`
     type User {
         id: Int!
+        verified: Boolean!
+        verifyCode: String!
         firstName: String!
         lastName: String
         username: String!
